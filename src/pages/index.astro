@@ -1,13 +1,52 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Parallax from '../components/parallax.astro';
 ---
 
 <Layout>
-	
-			
-	<Welcome />
+  <!-- Navbar -->
+  <Welcome />
+
+  <!-- Parallax 1 - Estilo clásico -->
+  <Parallax imageUrl="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1920&q=80">
+    <h1 class="text-5xl font-extrabold text-gold drop-shadow-lg tracking-widest uppercase">
+      Barbería El Clásico
+    </h1>
+  </Parallax>
+
+  <!-- Contenido 1 -->
+  <section class="h-screen bg-[#1a1a1a] text-white flex items-center justify-center px-6">
+    <div class="max-w-2xl text-center">
+      <h2 class="text-3xl font-bold mb-4 text-red-600">Cortes modernos y clásicos</h2>
+      <p class="text-lg leading-relaxed">
+        Experiencia, precisión y estilo en cada corte. Tu imagen, en buenas manos 💈
+      </p>
+    </div>
+  </section>
+
+  <!-- Parallax 2 - Servicio -->
+  <Parallax imageUrl="https://images.unsplash.com/photo-1588776814546-b26c3f482fa1?auto=format&fit=crop&w=1920&q=80">
+    <h2 class="text-4xl font-semibold text-white drop-shadow-lg uppercase tracking-wide">
+      Afeitado tradicional & productos premium
+    </h2>
+  </Parallax>
+
+  <!-- Contenido 2 -->
+  <section class="h-screen bg-[#2c2c2c] text-white flex items-center justify-center px-6">
+    <div class="max-w-xl text-center">
+      <h2 class="text-3xl font-bold text-gold mb-3">Atención personalizada</h2>
+      <p class="text-lg">
+        Reserva tu cita y disfruta de un ambiente relajado, música y estilo auténtico.
+      </p>
+    </div>
+  </section>
+
+  <!-- Parallax 3 - Contacto -->
+  <Parallax imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80">
+    <h2 class="text-4xl font-bold text-white tracking-wide drop-shadow-md">
+      ¡Agenda tu cita hoy!
+    </h2>
+  </Parallax>
 </Layout>
+
