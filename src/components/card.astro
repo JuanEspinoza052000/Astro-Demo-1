@@ -1,1 +1,52 @@
-<div class="bg-black"></div>
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+      <p class="text-gray-700 text-base">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      </p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+    </div>
+  </div>
+
+  <script>
+    const bentoItems = [
+      {
+        containerId: "bento1",
+        images: [
+          { src: "https://picsum.photos/id/1015/600/400", text: "Montañas al amanecer" },
+          { src: "https://picsum.photos/id/1016/600/400", text: "Valle tranquilo" },
+          { src: "https://picsum.photos/id/1018/600/400", text: "Bosque profundo" }
+        ]
+      },
+      {
+        containerId: "bento2",
+        images: [
+          { src: "https://picsum.photos/id/1020/600/400", text: "Lago cristalino" },
+          { src: "https://picsum.photos/id/1021/600/400", text: "Río sereno" },
+          { src: "https://picsum.photos/id/1022/600/400", text: "Cascada mágica" }
+        ]
+      }
+    ];
+  
+    bentoItems.forEach((item) => {
+      const container = document.getElementById(item.containerId);
+      const img = container.querySelector("img");
+      const desc = container.querySelector("p");
+      let index = 0;
+  
+      const updateContent = () => {
+        img.src = item.images[index].src;
+        desc.textContent = item.images[index].text;
+        index = (index + 1) % item.images.length;
+      };
+  
+      updateContent();
+      setInterval(updateContent, 4000); // Cambia cada 4 segundos
+    });
+  </script>
+  

@@ -1,0 +1,24 @@
+---
+const { title = "Corte Clásico", description = "Descripción del servicio", icon = "✂️", highlight = false } = Astro.props;
+---
+
+<div class={`p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg ${
+  highlight 
+    ? 'bg-amber-600 text-white' 
+    : 'bg-gray-800 text-gray-300'
+} h-full`}>
+  <div class="text-4xl mb-4">{icon}</div>
+  <h3 class={`text-xl font-bold mb-2 ${
+    highlight ? 'text-white' : 'text-amber-500'
+  }`}>{title}</h3>
+  <p class="mb-4">{description}</p>
+  <div class={`w-8 h-1 rounded-full ${
+    highlight ? 'bg-white' : 'bg-amber-500'
+  }`}></div>
+</div>
+
+<style>
+  .hover\:shadow-lg {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+</style>

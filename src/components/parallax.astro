@@ -1,5 +1,6 @@
 ---
-const { imageUrl, children } = Astro.props;
+const { imageUrl } = Astro.props;
+
 ---
 
 <div
@@ -7,6 +8,6 @@ const { imageUrl, children } = Astro.props;
   style={`background-image: url('${imageUrl}')`}
 >
   <div class="bg-black/50 px-6 py-4 rounded-lg text-center text-3xl font-semibold">
-    {children}
+    {<slot />}
   </div>
 </div>

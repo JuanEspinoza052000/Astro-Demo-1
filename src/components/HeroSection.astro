@@ -1,0 +1,35 @@
+---
+const backgroundImage = "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1920&q=80";
+---
+
+<section class="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
+  <!-- Fondo con overlay -->
+  <div 
+    class="absolute inset-0 z-0"
+    style={`background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage}); background-size: cover; background-position: center;`}
+  ></div>
+  
+  <!-- Contenido -->
+  <div class="container mx-auto px-4 text-center z-10">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+      <span class="text-amber-500">Barbería</span> Tradicional
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+      Arte y precisión en cada corte desde 2010
+    </p>
+    <div class="flex gap-4 justify-center">
+      <div class="bg-amber-600 text-white font-bold py-3 px-8 rounded-full">
+        Reservar
+      </div>
+      <div class="border border-white text-white font-bold py-3 px-8 rounded-full">
+        Servicios
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+</style>

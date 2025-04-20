@@ -2,51 +2,170 @@
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import Parallax from '../components/parallax.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import GalleryPreview from '../components/GalleryPreview.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Cortes from '../components/cortes.astro';
 ---
 
 <Layout>
-  <!-- Navbar -->
+  <!-- Hero Section -->
   <Welcome />
 
-  <!-- Parallax 1 - Estilo clásico -->
-  <Parallax imageUrl="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1920&q=80">
-    <h1 class="text-5xl font-extrabold text-gold drop-shadow-lg tracking-widest uppercase">
-      Barbería El Clásico
-    </h1>
-  </Parallax>
+  <Cortes />
 
-  <!-- Contenido 1 -->
-  <section class="h-screen bg-[#1a1a1a] text-white flex items-center justify-center px-6">
-    <div class="max-w-2xl text-center">
-      <h2 class="text-3xl font-bold mb-4 text-red-600">Cortes modernos y clásicos</h2>
-      <p class="text-lg leading-relaxed">
-        Experiencia, precisión y estilo en cada corte. Tu imagen, en buenas manos 💈
-      </p>
+  <!-- Servicios Destacados -->
+  <section class="py-20 bg-gray-950">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
+        NUESTROS <span class="text-white">SERVICIOS</span>
+      </h2>
+      
+      <ServiceGrid cols="3">
+        <ServiceCard 
+          title="Corte Clásico" 
+          description="Técnicas tradicionales con acabado moderno"
+          icon="✂️"
+          highlight
+        />
+        <ServiceCard 
+          title="Afeitado Tradicional" 
+          description="Con navaja y productos artesanales"
+          icon="🪒"
+        />
+        <ServiceCard 
+          title="Arreglo de Barba" 
+          description="Diseño y mantenimiento profesional"
+          icon="🧔"
+        />
+      </ServiceGrid>
     </div>
   </section>
 
-  <!-- Parallax 2 - Servicio -->
-  <Parallax imageUrl="https://images.unsplash.com/photo-1588776814546-b26c3f482fa1?auto=format&fit=crop&w=1920&q=80">
-    <h2 class="text-4xl font-semibold text-white drop-shadow-lg uppercase tracking-wide">
-      Afeitado tradicional & productos premium
-    </h2>
-  </Parallax>
+  <!-- Separador Visual -->
+  <SectionDivider color="amber" />
 
-  <!-- Contenido 2 -->
-  <section class="h-screen bg-[#2c2c2c] text-white flex items-center justify-center px-6">
-    <div class="max-w-xl text-center">
-      <h2 class="text-3xl font-bold text-gold mb-3">Atención personalizada</h2>
-      <p class="text-lg">
-        Reserva tu cita y disfruta de un ambiente relajado, música y estilo auténtico.
-      </p>
+  <!-- Sobre Nosotros -->
+  <section class="py-20 bg-gray-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="lg:w-1/2">
+          <img 
+            src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" 
+            alt="Barbería clásica"
+            class="rounded-lg shadow-2xl w-full"
+          />
+        </div>
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold mb-6 text-amber-500">TRADICIÓN DESDE 2008</h2>
+          <p class="text-lg mb-6 leading-relaxed">
+            En nuestra barbería fusionamos lo mejor de las técnicas tradicionales con los estándares modernos 
+            de calidad. Cada cliente recibe un trato personalizado en un ambiente diseñado exclusivamente 
+            para hombres que valoran el cuidado personal.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <span class="text-amber-500 mr-3 text-xl">✓</span>
+              <p class="text-lg">Barberos con más de 10 años de experiencia</p>
+            </div>
+            <div class="flex items-start">
+              <span class="text-amber-500 mr-3 text-xl">✓</span>
+              <p class="text-lg">Productos premium de origen natural</p>
+            </div>
+            <div class="flex items-start">
+              <span class="text-amber-500 mr-3 text-xl">✓</span>
+              <p class="text-lg">Ambiente exclusivo y relajado</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Parallax 3 - Contacto -->
-  <Parallax imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80">
-    <h2 class="text-4xl font-bold text-white tracking-wide drop-shadow-md">
-      ¡Agenda tu cita hoy!
-    </h2>
+  <!-- Galería de Trabajos -->
+  <Parallax imageUrl="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1920&q=80" overlay="rgba(0,0,0,0.4)">
+    <div class="container mx-auto px-4 py-20">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-white">
+        NUESTRO <span class="text-amber-500">TRABAJO</span>
+      </h2>
+      <GalleryPreview />
+    </div>
   </Parallax>
+
+  <!-- Testimonios -->
+  <section class="py-20 bg-gray-800 text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
+        OPINIONES DE <span class="text-white">CLIENTES</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <TestimonialCard 
+          name="Carlos Méndez" 
+          content="La mejor experiencia de barbería que he tenido. Atención impecable y resultados perfectos." 
+          rating=5 
+        />
+        <TestimonialCard 
+          name="Javier López" 
+          content="Increíble servicio. Mi barba nunca había lucido tan bien. Volveré sin duda." 
+          rating=5 
+        />
+        <TestimonialCard 
+          name="Miguel Ángel" 
+          content="Ambiente relajado, profesionales de verdad. Finalmente encontré mi barbería de confianza." 
+          rating=4 
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA - Reserva -->
+  <Parallax imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80" overlay="rgba(0,0,0,0.6)">
+    <div class="container mx-auto px-4 py-28 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        ¿LISTO PARA TU <span class="text-amber-500">EXPERIENCIA</span>?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Reserva tu cita ahora y recibe un 10% de descuento en tu primer servicio
+      </p>
+      <div class="flex justify-center gap-4">
+        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+          Reservar Ahora
+        </button>
+        <button class="bg-transparent border border-white hover:bg-white hover:bg-opacity-10 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+          Llamar Ahora
+        </button>
+      </div>
+    </div>
+  </Parallax>
+
+  <!-- Contacto -->
+  <section class="py-20 bg-gray-900 text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
+        CONTACTO Y <span class="text-white">HORARIO</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <ContactBlock variant="dark" />
+        
+        <div class="bg-gray-800 p-8 rounded-lg">
+          <h3 class="text-xl font-bold mb-6 text-amber-500">Ubicación</h3>
+          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209132834!2d-73.98784392452527!3d40.74844047138918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1713456327812!5m2!1sen!2sus" 
+              class="w-full h-full" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
-

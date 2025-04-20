@@ -1,58 +1,60 @@
 ---
-import "../styles/global.css";
+
 ---
 
-<nav class="bg-white shadow-lg rounded-2xl mx-auto mt-4 w-[90%] px-6 py-2">
+
+
+
+<nav class="bg-gradientto-r from-black/20 to-black/20 backdrop--sm fixed shadow-lg rounded-2xl mx-auto mt-4 w-[100%] px-6 py-4">
   <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
     <!-- Logo -->
     <div class="flex items-center">
-      <a href="/" class="text-2xl font-bold text-blue-600">MiLogo</a>
+      <a href="/" class="text-3xl font-semibold text-blue-500 hover:text-blue-600 transition-all duration-300">MiLogo</a>
     </div>
 
     <!-- Navegación Desktop -->
-    <div class="hidden md:flex items-center space-x-6">
-      <button onclick="location.href='/'" class="text-gray-700 hover:text-blue-600 transition">Inicio</button>
+    <div class="hidden md:flex items-center space-x-8">
+      <button onclick="location.href='/'" class="text-gray-800 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Inicio</button>
 
       <!-- Dropdown -->
       <div class="relative group">
-        <button class="text-gray-700 hover:text-blue-600 transition">Servicios</button>
-        <div class="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-md mt-2 rounded-md z-10 min-w-[160px]">
-          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left w-full">Web</button>
-          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left w-full">Apps</button>
-          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left w-full">Marketing</button>
+        <button class="text-gray-800 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Servicios</button>
+        <div class="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-lg mt-2 rounded-md z-10 min-w-[160px]">
+          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 text-left w-full rounded-md">Web</button>
+          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 text-left w-full rounded-md">Apps</button>
+          <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 text-left w-full rounded-md">Marketing</button>
         </div>
       </div>
 
-      <button onclick="location.href='/about'" class="text-gray-700 hover:text-blue-600 transition">Contacto</button>
-      <button onclick="location.href='/Login'" class="text-gray-700 hover:text-blue-600 transition">Cuenta</button>
-      <button onclick="location.href='#'" class="text-gray-700 hover:text-blue-600 transition">Comprar</button>
+      <button onclick="location.href='/About'" class="text-gray-800 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Contacto</button>
+      <button onclick="location.href='/Login'" class="text-gray-800 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Cuenta</button>
+      <button onclick="location.href='#'" class="text-gray-800 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Comprar</button>
     </div>
 
     <!-- Botón hamburguesa -->
     <div class="md:hidden flex items-center">
-      <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+      <button id="menu-toggle" class="text-gray-800 focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
   </div>
 
   <!-- Menú móvil -->
-  <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-2 mt-3 px-2">
-    <button onclick="location.href='/'" class="text-gray-700 hover:text-blue-600">Inicio</button>
+  <div id="mobile-menu" class="md:hidden flex flex-col gap-2 mt-3 px-2 hidden">
+    <button onclick="location.href='/'" class="text-gray-800 hover:text-blue-600 px-4 py-2">Inicio</button>
     <details class="group">
-      <summary class="cursor-pointer text-gray-700 hover:text-blue-600">Servicios</summary>
+      <summary class="cursor-pointer text-gray-800 hover:text-blue-600 px-4 py-2">Servicios</summary>
       <div class="pl-4 mt-1 space-y-1">
-        <button onclick="location.href='#'" class="text-sm text-gray-700 hover:text-blue-600 block">Web</button>
-        <button onclick="location.href='#'" class="text-sm text-gray-700 hover:text-blue-600 block">Apps</button>
-        <button onclick="location.href='#'" class="text-sm text-gray-700 hover:text-blue-600 block">Marketing</button>
+        <button onclick="location.href='#'" class="text-sm text-gray-800 hover:text-blue-600 block px-4 py-2">Web</button>
+        <button onclick="location.href='#'" class="text-sm text-gray-800 hover:text-blue-600 block px-4 py-2">Apps</button>
+        <button onclick="location.href='#'" class="text-sm text-gray-800 hover:text-blue-600 block px-4 py-2">Marketing</button>
       </div>
     </details>
-    <button onclick="location.href='/about'" class="text-gray-700 hover:text-blue-600">Contacto</button>
-    <button onclick="location.href='/Login'" class="text-gray-700 hover:text-blue-600">Cuenta</button>
-    <button onclick="location.href='#'" class="text-gray-700 hover:text-blue-600">Comprar</button>
+    <button onclick="location.href='/about'" class="text-gray-800 hover:text-blue-600 px-4 py-2">Contacto</button>
+    <button onclick="location.href='/Login'" class="text-gray-800 hover:text-blue-600 px-4 py-2">Cuenta</button>
+    <button onclick="location.href='#'" class="text-gray-800 hover:text-blue-600 px-4 py-2">Comprar</button>
   </div>
 </nav>
 

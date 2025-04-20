@@ -1,0 +1,13 @@
+---
+const { cols = "4" } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-{cols} gap-6 w-full">
+  <slot />
+</div>
+
+<style>
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+</style>
