@@ -1,13 +1,55 @@
 ---
-const { imageUrl } = Astro.props;
-
+// src/components/Parallax.astro
+const { 
+  imageUrl, 
+  overlayClass = 'bg-black/50', 
+  speed = 0.5,
+  contentClass = 'px-6 py-4 rounded-lg text-center max-w-4xl mx-auto'
+} = Astro.props;
 ---
 
-<div
-  class="parallax-section h-screen flex items-center justify-center text-white"
-  style={`background-image: url('${imageUrl}')`}
->
-  <div class="bg-black/50 px-6 py-4 rounded-lg text-center text-3xl font-semibold">
-    {<slot />}
+<div class="relative h-screen overflow-hidden">
+  <!-- Fondo con efecto parallax -->
+  <div 
+    class="absolute inset-0 bg-cover bg-center bg-fixed will-change-transform transition-transform duration-100 ease-out"
+    style={`
+      background-image: url('${imageUrl}');
+      transform: scale(${1 + speed * 0.1});
+    `}
+    data-speed="${speed}"
+    id="parallax-bg"
+  ></div>
+  
+  <!-- Overlay -->
+  <div class={`absolute inset-0 ${overlayClass}`}></div>
+  
+  <!-- Contenido -->
+  <div class="relative h-full flex items-center justify-center">
+    <div class={contentClass}>
+      <slot />
+    </div>
   </div>
 </div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const parallaxBg = document.getElementById('parallax-bg');
+    
+    const handleScroll = () => {
+      if (parallaxBg) {
+        const scrollPosition = window.pageYOffset;
+        const speed = parseFloat(parallaxBg.getAttribute('data-speed'));
+        const yPos = -(scrollPosition * speed);
+        parallaxBg.style.transform = `translate3d(0, ${yPos}px, 0) scale(${1 + speed * 0.1})`;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    // Cleanup
+    document.addEventListener('astro:after-swap', () => {
+      window.removeEventListener('scroll', handleScroll);
+    });
+  });
+</script>

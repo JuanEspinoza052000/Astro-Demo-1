@@ -13,40 +13,5 @@
     </div>
   </div>
 
-  <script>
-    const bentoItems = [
-      {
-        containerId: "bento1",
-        images: [
-          { src: "https://picsum.photos/id/1015/600/400", text: "Montañas al amanecer" },
-          { src: "https://picsum.photos/id/1016/600/400", text: "Valle tranquilo" },
-          { src: "https://picsum.photos/id/1018/600/400", text: "Bosque profundo" }
-        ]
-      },
-      {
-        containerId: "bento2",
-        images: [
-          { src: "https://picsum.photos/id/1020/600/400", text: "Lago cristalino" },
-          { src: "https://picsum.photos/id/1021/600/400", text: "Río sereno" },
-          { src: "https://picsum.photos/id/1022/600/400", text: "Cascada mágica" }
-        ]
-      }
-    ];
-  
-    bentoItems.forEach((item) => {
-      const container = document.getElementById(item.containerId);
-      const img = container.querySelector("img");
-      const desc = container.querySelector("p");
-      let index = 0;
-  
-      const updateContent = () => {
-        img.src = item.images[index].src;
-        desc.textContent = item.images[index].text;
-        index = (index + 1) % item.images.length;
-      };
-  
-      updateContent();
-      setInterval(updateContent, 4000); // Cambia cada 4 segundos
-    });
-  </script>
+
   

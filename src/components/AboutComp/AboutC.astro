@@ -1,5 +1,148 @@
-<div class="bg-gray-900 text-white p-8 rounded-lg shadow-lg">
-  <h2 class="text-2xl font-bold mb-6">Sobre Nosotros</h2>
-  <p class="mb-4">En nuestro salón
+---
+// src/components/AboutUs.astro
 
-</div>
+const barberTeam = [
+  {
+    name: "Carlos Méndez",
+    role: "Barbero Principal",
+    experience: "12 años",
+    specialty: "Cortes clásicos y fades",
+    image: "/images/barber-carlos.jpg",
+    quote: "Un buen corte de cabello es la base de un look impecable"
+  },
+  {
+    name: "Javier Rojas",
+    role: "Especialista en Barbas",
+    experience: "8 años",
+    specialty: "Afeitado tradicional y diseño de barba",
+    image: "/images/barber-javier.jpg",
+    quote: "La barba bien cuidada es la firma de un hombre"
+  },
+  {
+    name: "Andrés Fernández",
+    role: "Estilista Senior",
+    experience: "10 años",
+    specialty: "Cortes modernos y coloración",
+    image: "/images/barber-andres.jpg",
+    quote: "Cada cabeza es un lienzo único"
+  }
+];
+---
+
+<section id="about" class="py-20 bg-gray-900 text-white">
+  <div class="container mx-auto px-4">
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-amber-500 mb-4">NUESTRA HISTORIA</h2>
+      <div class="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
+      <p class="text-xl max-w-3xl mx-auto">
+        Más que una barbería, somos guardianes de la tradición y la masculinidad bien entendida
+      </p>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="flex flex-col lg:flex-row gap-12 items-center mb-20">
+      <div class="lg:w-1/2">
+        <img 
+          src="/images/barber-shop-interior.jpg" 
+          alt="Interior de nuestra barbería" 
+          class="rounded-lg shadow-2xl w-full"
+          loading="lazy"
+        />
+      </div>
+      <div class="lg:w-1/2">
+        <h3 class="text-2xl font-bold text-amber-400 mb-6">TRADICIÓN DESDE 2010</h3>
+        <p class="mb-6 leading-relaxed">
+          En el corazón de la ciudad, <span class="text-amber-400 font-medium">The Gentleman's Cut</span> abrió sus puertas con 
+          la misión de revivir el auténtico arte de la barbería. Lo que comenzó como un pequeño 
+          local hoy es referencia en cuidado masculino premium.
+        </p>
+        <p class="mb-6 leading-relaxed">
+          Combinamos técnicas ancestrales con los últimos avances en estilismo, creando una 
+          experiencia que honra el pasado mientras abraza el futuro.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h4 class="font-bold text-amber-400 mb-2">Misión</h4>
+            <p>Recuperar el ritual del cuidado personal como experiencia transformadora</p>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h4 class="font-bold text-amber-400 mb-2">Visión</h4>
+            <p>Ser el estándar de excelencia en barbería a nivel nacional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipo -->
+    <div class="text-center mb-16">
+      <h3 class="text-3xl font-bold text-amber-500 mb-6">CONOCE A NUESTROS BARBEROS</h3>
+      <p class="text-xl max-w-3xl mx-auto mb-12">
+        Artesanos certificados que dominan su oficio con pasión y precisión
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {barberTeam.map((barber) => (
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition hover:scale-105 duration-300">
+            <img 
+              src={barber.image} 
+              alt={barber.name} 
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-amber-400">{barber.name}</h4>
+              <p class="text-gray-400 mb-2">{barber.role}</p>
+              <div class="flex items-center justify-center mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+              <p class="mb-2"><span class="font-medium">Experiencia:</span> {barber.experience}</p>
+              <p class="mb-3"><span class="font-medium">Especialidad:</span> {barber.specialty}</p>
+              <p class="italic text-gray-300">"{barber.quote}"</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="bg-gray-800 rounded-xl p-8 md:p-12">
+      <h3 class="text-3xl font-bold text-center text-amber-500 mb-12">NUESTROS VALORES</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-amber-500/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-2">PRECISIÓN</h4>
+          <p>Cada corte es ejecutado con exactitud milimétrica</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-amber-500/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-2">TRADICIÓN</h4>
+          <p>Técnicas probadas por generaciones de barberos</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-amber-500/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-2">COMUNIDAD</h4>
+          <p>Un espacio donde los clientes se convierten en familia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

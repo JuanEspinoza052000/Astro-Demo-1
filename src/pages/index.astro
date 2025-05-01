@@ -1,21 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// Importaciones organizadas por categorías
+// Componentes principales
 import Layout from '../layouts/Layout.astro';
-import Parallax from '../components/parallax.astro';
-import ServiceCard from '../components/ServiceCard.astro';
+import Welcome from '../components/Welcome.astro';
+
+// Componentes de sección
 import ServiceGrid from '../components/ServiceGrid.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import SectionDivider from '../components/SectionDivider.astro';
 import GalleryPreview from '../components/GalleryPreview.astro';
 import ContactBlock from '../components/ContactBlock.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+
+// Componentes especializados
+import Parallax from '../components/Parallax.astro';
 import Cortes from '../components/cortes.astro';
 ---
 
 <Layout>
   <!-- Hero Section -->
   <Welcome />
-
-  
 
   <!-- Servicios Destacados -->
   <section class="py-20 bg-gray-950">
@@ -57,6 +61,7 @@ import Cortes from '../components/cortes.astro';
             src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" 
             alt="Barbería clásica"
             class="rounded-lg shadow-2xl w-full"
+            loading="lazy"
           />
         </div>
         <div class="lg:w-1/2">
@@ -85,63 +90,57 @@ import Cortes from '../components/cortes.astro';
     </div>
   </section>
 
+  <!-- Sección de Cortes (repetida 3 veces) -->
   <Cortes />
   <Cortes />
   <Cortes />
-  <!-- Galería de Trabajos -->
-  <Parallax imageUrl="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1920&q=80" overlay="rgba(0,0,0,0.4)">
-    <div class="container mx-auto px-4 py-20">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-white">
-        NUESTRO <span class="text-amber-500">TRABAJO</span>
-      </h2>
-      <GalleryPreview />
-    </div>
+
+  <!-- Galería de Trabajos con Parallax -->
+  <Parallax 
+    imageUrl="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1920&q=80" 
+    overlayClass="bg-gray-900/70"
+    speed="0.3"
+    contentClass="container mx-auto px-4 py-20"
+  >
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
+      <span class="text-amber-500">GALERÍA</span> DE TRABAJOS
+    </h2>
+    <p class="text-xl text-white mb-12 max-w-2xl mx-auto">
+      Descubre la calidad y precisión de nuestros cortes y arreglos de barba
+    </p>
+    <GalleryPreview />
   </Parallax>
 
   <!-- Testimonios -->
   <section class="py-20 bg-gray-800 text-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
-        OPINIONES DE <span class="text-white">CLIENTES</span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+        OPINIONES DE <span class="text-amber-500">NUESTROS CLIENTES</span>
       </h2>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <TestimonialCard 
-          name="Carlos Méndez" 
-          content="La mejor experiencia de barbería que he tenido. Atención impecable y resultados perfectos." 
-          rating=5 
-        />
-        <TestimonialCard 
-          name="Javier López" 
-          content="Increíble servicio. Mi barba nunca había lucido tan bien. Volveré sin duda." 
-          rating=5 
-        />
-        <TestimonialCard 
-          name="Miguel Ángel" 
-          content="Ambiente relajado, profesionales de verdad. Finalmente encontré mi barbería de confianza." 
-          rating=4 
-        />
-      </div>
+      <TestimonialCarousel />
     </div>
   </section>
 
-  <!-- CTA - Reserva -->
-  <Parallax imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80" overlay="rgba(0,0,0,0.6)">
-    <div class="container mx-auto px-4 py-28 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        ¿LISTO PARA TU <span class="text-amber-500">EXPERIENCIA</span>?
-      </h2>
-      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
-        Reserva tu cita ahora y recibe un 10% de descuento en tu primer servicio
-      </p>
-      <div class="flex justify-center gap-4">
-        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">
-          Reservar Ahora
-        </button>
-        <button class="bg-transparent border border-white hover:bg-white hover:bg-opacity-10 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">
-          Llamar Ahora
-        </button>
-      </div>
+  <!-- CTA Principal con Parallax -->
+  <Parallax 
+    imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80" 
+    overlayClass="bg-gray-900/80"
+    speed="0.5"
+    contentClass="container mx-auto px-4 py-28 text-center"
+  >
+    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
+      TRANSFORMA TU ESTILO HOY
+    </h2>
+    <p class="text-xl text-amber-300 mb-8 max-w-2xl mx-auto">
+      Reserva tu cita y recibe un tratamiento premium
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">
+        RESERVAR AHORA
+      </button>
+      <button class="bg-transparent border-2 border-amber-500 hover:bg-amber-500/10 text-amber-500 font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">
+        VER SERVICIOS
+      </button>
     </div>
   </Parallax>
 
