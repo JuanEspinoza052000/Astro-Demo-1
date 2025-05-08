@@ -14,7 +14,8 @@ import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 
 // Componentes especializados
 import Parallax from '../components/Parallax.astro';
-import Cortes from '../components/cortes.astro';
+
+import ScrollButton from '../components/ScrollButton.astro';
 ---
 
 <Layout>
@@ -28,7 +29,7 @@ import Cortes from '../components/cortes.astro';
         NUESTROS <span class="text-white">SERVICIOS</span>
       </h2>
       
-      <ServiceGrid cols="3" transform transition hover:scale-105 duration-300>
+      <ServiceGrid c cols="3" >
         <ServiceCard 
           title="Corte Clásico" 
           description="Técnicas tradicionales con acabado moderno"
@@ -90,10 +91,7 @@ import Cortes from '../components/cortes.astro';
     </div>
   </section>
 
-  <!-- Sección de Cortes (repetida 3 veces) -->
-  <Cortes />
-  <Cortes />
-  <Cortes />
+ 
 
   <!-- Galería de Trabajos con Parallax -->
   <Parallax 
@@ -170,4 +168,6 @@ import Cortes from '../components/cortes.astro';
       </div>
     </div>
   </section>
+  <!-- Scroll Button -->
+  <ScrollButton />
 </Layout>

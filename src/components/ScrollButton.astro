@@ -1,0 +1,39 @@
+---
+export const prerender = false;
+---
+
+<button
+  id="scrollBtn"
+  class="fixed bottom-5 right-5 p-3 rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 opacity-0 hover:bg-blue-700 cursor-pointer"
+  aria-label="Ir al inicio"
+  onclick="scrollToTop()"
+>
+  ⬆️
+</button>
+
+<script is:inline>
+  // Función global como fallback
+  window.scrollToTop = function() {
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      // Fallback para navegadores antiguos
+      document.documentElement.scrollTop = 0;
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollBtn = document.getElementById('scrollBtn');
+    if (!scrollBtn) return;
+
+    // Mostrar/ocultar botón
+    window.addEventListener('scroll', () => {
+      const shouldShow = window.scrollY > 300;
+      scrollBtn.classList.toggle('opacity-0', !shouldShow);
+      scrollBtn.classList.toggle('opacity-100', shouldShow);
+    });
+
+    // Manejador de clic
+    scrollBtn.addEventListener('click', scrollToTop);
+  });
+</script>

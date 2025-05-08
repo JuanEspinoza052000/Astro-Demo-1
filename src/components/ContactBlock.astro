@@ -2,25 +2,91 @@
 const { variant = "light" } = Astro.props;
 ---
 
-<div class={`p-8 rounded-lg ${
-  variant === 'light' ? 'bg-gray-800' : 'bg-gray-900'
-}`}>
+<!-- Contenedor principal con estilos iniciales visibles -->
+<div class={`info-container p-8 rounded-lg ${variant === 'light' ? 'bg-gray-800' : 'bg-gray-900'}`}>
   <h3 class="text-xl font-bold mb-6 text-amber-500">Información de Contacto</h3>
   
   <div class="space-y-4">
-    <div class="flex items-start">
+    <div class="contact-item flex items-start">
       <span class="text-amber-500 mr-3 mt-1">📍</span>
-      <p>Calle Principal 123, Ciudad</p>
+      <p>Alajuela Centro</p>
     </div>
     
-    <div class="flex items-start">
+    <div class="contact-item flex items-start">
       <span class="text-amber-500 mr-3 mt-1">📞</span>
-      <p>+1 234 567 890</p>
+      <p>63118684</p>
     </div>
     
-    <div class="flex items-start">
+    <div class="contact-item flex items-start">
       <span class="text-amber-500 mr-3 mt-1">✉️</span>
-      <p>contacto@barberia.com</p>
+      <p>contacto@barbershop.com</p>
     </div>
   </div>
 </div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Cargar GSAP solo en cliente
+    if (typeof window !== 'undefined') {
+      import('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js').then(() => {
+        // Animación suave del contenedor
+        gsap.from('.info-container', {
+          duration: 1,
+          opacity: 0,
+          y: 20,
+          ease: "power2.out"
+        });
+
+        // Animación escalonada de los items
+        gsap.from('.contact-item', {
+          duration: 0.8,
+          opacity: 0,
+          x: -20,
+          stagger: 0.15,
+          delay: 0.3,
+          ease: "back.out(1.2)"
+        });
+
+        // Efecto hover
+        const container = document.querySelector('.info-container');
+        container.addEventListener('mouseenter', () => {
+          gsap.to(container, {
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power1.out"
+          });
+        });
+
+        container.addEventListener('mouseleave', () => {
+          gsap.to(container, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power1.out"
+          });
+        });
+      }).catch(error => {
+        console.error('Error al cargar GSAP:', error);
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Estilos base para mejor visualización */
+  .info-container {
+    transition: box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  
+  .info-container:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-item {
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    color: #f59e0b;
+  }
+</style>
