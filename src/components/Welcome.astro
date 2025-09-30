@@ -5,12 +5,13 @@
 
 
 
-<nav class="bg-linear-to-r from-gray-800 via-blue-700 to-gray-900 backdrop-blur-sm  shadow-lg rounded-2xl mx-auto mt-4 w-full px-6 py-4">
+<nav class="bg-linear-to-r  from-gray-800 via-blue-700 to-gray-900 backdrop-blur-sm  shadow-lg rounded-2xl mx-auto mt-4 w-full px-6 py-4 fixed">
 
   <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
     <!-- Logo -->
     <div class="flex items-center">
-      <a href="/" class="text-3xl font-semibold text-blue-500 hover:text-blue-600 transition-all duration-300">MiLogo</a>
+     
+      <img src="/images/logo.png" alt="Logo" class="w-12 h-12 ml-2 rounded-full">
     </div>
 
     <!-- Navegación Desktop -->
@@ -18,19 +19,20 @@
       <button onclick="location.href='/'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Inicio</button>
 
       <!-- Dropdown -->
-      <!-- <div class="relative group">
+      <div class="relative group">
         <button class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Servicios</button>
         <div class="absolute left-0 hidden group-hover:flex flex-col bg-white shadow-lg mt-2 rounded-md z-10 min-w-[160px]">
           <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 text-left w-full rounded-md">Web</button>
           <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 text-left w-full rounded-md">Apps</button>
           <button onclick="location.href='#'" class="px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 text-left w-full rounded-md">Marketing</button>
         </div>
-      </div> -->
+      </div> 
 
       <button onclick="location.href='/About'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Contacto</button>
       <button onclick="location.href='/Login'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Cuenta</button>
-      <button onclick="location.href='#'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Comprar</button>
+      <button onclick="location.href='/Product'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Comprar</button>
       <button onclick="location.href='/Appointment'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Agendar</button>
+      <button onclick="location.href='/Admin'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Admin</button>
     </div>
 
     <!-- Botón hamburguesa -->
@@ -46,21 +48,15 @@
   <!-- Menú móvil -->
   <div id="mobile-menu" class="md:hidden flex flex-col gap-2 mt-3 px-2 hidden">
     <button onclick="location.href='/'" class="text-gray-800 hover:text-blue-600 px-4 py-2">Inicio</button>
-    <details class="group">
-      <summary class="cursor-pointer text-gray-300 hover:text-blue-600 px-4 py-2">Servicios</summary>
-      <div class="pl-4 mt-1 space-y-1">
-        <button onclick="location.href='#'" class="text-sm text-gray-100 hover:text-blue-600 block px-4 py-2">Web</button>
-        <button onclick="location.href='#'" class="text-sm text-gray-100 hover:text-blue-600 block px-4 py-2">Apps</button>
-        <button onclick="location.href='#'" class="text-sm text-gray-100 hover:text-blue-600 block px-4 py-2">Marketing</button>
-      </div>
-    </details>
-    <button onclick="location.href='/about'" class="text-gray-100 hover:text-blue-600 px-4 py-2">Contacto</button>
-    <button onclick="location.href='/Login'" class="text-gray-100 hover:text-blue-600 px-4 py-2">Cuenta</button>
-    <button onclick="location.href='#'" class="text-gray-100 hover:text-blue-600 px-4 py-2">Comprar</button>
-  </div>
+      <button onclick="location.href='/About'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Contacto</button>
+      <button onclick="location.href='/Login'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Cuenta</button>
+      <button onclick="location.href='/Product'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Comprar</button>
+      <button onclick="location.href='/Appointment'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Agendar</button>
+      <button onclick="location.href='/Admin'" class="text-gray-300 hover:text-blue-600 transition-all duration-300 px-3 py-2 rounded-lg">Admin</button>
+    </div>
 </nav>
 
-<script>
+<script is:inline>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
 

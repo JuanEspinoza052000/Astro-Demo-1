@@ -1,0 +1,281 @@
+<!--  
+<div class="grid grid-cols-5 grid-rows-5 gap-4">
+    <div class="row-span-2">1</div>
+    <div class="col-span-2 row-span-4 col-start-4 row-start-2">2</div>
+    <div class="col-span-4 col-start-2 row-start-1">3</div>
+    <div class="col-span-2 row-span-2 col-start-1 row-start-4">4</div>
+    <div class="row-span-2 col-start-3 row-start-4">5</div>
+    <div class="col-start-1 row-start-3">6</div>
+    <div class="col-span-2 row-span-2 col-start-2 row-start-2">7</div>
+</div>
+     -->
+---
+// Dashboard.astro
+export interface Props {
+  // Configuración de colores
+  theme?: {
+    sidebar: {
+      bg: string;
+      text: string;
+      hover: string;
+      active: string;
+    };
+    main: {
+      bg: string;
+      border: string;
+    };
+    accent: string;
+  };
+  // Configuración del sidebar
+  sidebarItems?: Array<{
+    name: string;
+    icon: string;
+    href: string;
+    badge?: {
+      text: string;
+      color: string;
+    };
+    active?: boolean;
+  }>;
+  // Configuración de la grilla
+  gridLayout?: {
+    topCards: number;
+    showLargeCard: boolean;
+    bottomCards: number;
+  };
+}
+
+const {
+  theme = {
+    sidebar: {
+      bg: 'bg-slate-900',
+      text: 'text-slate-300',
+      hover: 'hover:bg-slate-800',
+      active: 'bg-blue-600 text-white'
+    },
+    main: {
+      bg: 'bg-gradient-to-br from-slate-50 to-slate-100',
+      border: 'border-slate-200'
+    },
+    accent: 'text-blue-600'
+  },
+  sidebarItems = [
+    {
+      name: 'Dashboard',
+      icon: 'M3 13a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM3 3a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V3z',
+      href: '/Admin',
+      active: true
+    },
+    {
+      name: 'Analytics',
+      icon: 'M9 2a1 1 0 000 2h2a1 1 0 100-2H9z M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z',
+      href: '#'
+    },
+    {
+      name: 'Projects',
+      icon: 'M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z',
+      href: '#',
+      badge: { text: '12', color: 'bg-emerald-100 text-emerald-800' }
+    },
+    {
+      name: 'Team',
+      icon: 'M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z',
+      href: '#'
+    },
+    {
+      name: 'Settings',
+      icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+      href: '#'
+    },
+    {
+      name: 'User view',
+      icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+      href: '/'
+    }
+  ],
+  gridLayout = {
+    topCards: 4,
+    showLargeCard: true,
+    bottomCards: 6
+  }
+} = Astro.props;
+---
+     
+  <!-- Main Content -->
+  <main class={`flex-1 lg:ml-0 ${theme.main.bg} overflow-auto`}>
+    <div class="p-6">
+      <!-- Header -->
+      <div class="mb-8 ">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Bienvenido de vuelta </h2>
+        <h2 class="text-3xl font-bold text-red-400 mb-2">@admin</h2>
+        <p class="text-gray-600">Aquí tienes un resumen de tu actividad</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${gridLayout.topCards} gap-6 mb-8`}>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Total de Ventas</p>
+              <p class="text-3xl font-bold text-gray-900">$12,426</p>
+              <p class="text-sm text-emerald-600">+12% vs mes anterior</p>
+            </div>
+            <div class="p-3 bg-emerald-100 rounded-full">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Usuarios Activos</p>
+              <p class="text-3xl font-bold text-gray-900">1,426</p>
+              <p class="text-sm text-blue-600">+8% vs mes anterior</p>
+            </div>
+            <div class="p-3 bg-blue-100 rounded-full">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Proyectos</p>
+              <p class="text-3xl font-bold text-gray-900">24</p>
+              <p class="text-sm text-purple-600">+3 este mes</p>
+            </div>
+            <div class="p-3 bg-purple-100 rounded-full">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Ingresos</p>
+              <p class="text-3xl font-bold text-gray-900">$8,426</p>
+              <p class="text-sm text-orange-600">+15% vs mes anterior</p>
+            </div>
+            <div class="p-3 bg-orange-100 rounded-full">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Large Chart Area -->
+      {gridLayout.showLargeCard && (
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Análisis de Rendimiento</h3>
+              <p class="text-sm text-gray-600">Vista general de los últimos 30 días</p>
+            </div>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200">
+                7 días
+              </button>
+              <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">
+                30 días
+              </button>
+              <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">
+                90 días
+              </button>
+            </div>
+          </div>
+          <div class="h-80 bg-gray-50 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <p class="text-gray-500">Gráfico de análisis aquí</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Bottom Grid -->
+      <div class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`}>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Actividad Reciente</h3>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <p class="text-sm text-gray-600">Usuario registrado</p>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <p class="text-sm text-gray-600">Nuevo proyecto creado</p>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <p class="text-sm text-gray-600">Tarea completada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Tareas Pendientes</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-600">Revisar reportes</span>
+              <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Urgente</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-600">Llamada con cliente</span>
+              <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Pendiente</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-600">Actualizar documentación</span>
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">En progreso</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Equipo</h3>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                JS
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Juan Silva</p>
+                <p class="text-xs text-gray-500">Desarrollador</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                MR
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">María Rodríguez</p>
+                <p class="text-xs text-gray-500">Diseñadora</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                CL
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">Carlos López</p>
+                <p class="text-xs text-gray-500">Manager</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

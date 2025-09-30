@@ -3,15 +3,20 @@
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import AppointmentComp from "../components/appointmentComp.astro";
+import type { imageConfig } from "astro:assets";
+import BarberShopBooking from '../components/BarberShopBooking.jsx';
 ---
 
 <Layout>
    
-    <AppointmentComp />
+    <AppointmentComp client:load />
+    <!-- <BarberShopBooking client:load /> -->
+
+
   
 
 
-    <!-- Asegúrate de que el script esté correctamente incluido -->
+    <!-- Asegúrate de que el script esté correctamente incluido
     <script type="module">
         document.addEventListener("DOMContentLoaded", function () {
             const button = document.getElementById("Agendar");
@@ -22,5 +27,5 @@ import AppointmentComp from "../components/appointmentComp.astro";
                 });
             }
         });
-    </script>
+    </script> -->
 </Layout>

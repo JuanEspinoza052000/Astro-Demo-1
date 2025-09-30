@@ -1,48 +1,54 @@
 ---
 // Importaciones organizadas por categorías
 // Componentes principales
-import Layout from '../layouts/Layout.astro';
-import Welcome from '../components/Welcome.astro';
+import Layout from "../layouts/Layout.astro";
+import Welcome from "../components/Welcome.astro";
+import React from "react";
 
 // Componentes de sección
-import ServiceGrid from '../components/ServiceGrid.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import SectionDivider from '../components/SectionDivider.astro';
-import GalleryPreview from '../components/GalleryPreview.astro';
-import ContactBlock from '../components/ContactBlock.astro';
-import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ServiceGrid from "../components/ServiceGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import SectionDivider from "../components/SectionDivider.astro";
+import GalleryPreview from "../components/GalleryPreview.astro";
+import ContactBlock from "../components/ContactBlock.astro";
 
+import NeonPulseText from "../components/Text";
+import HeroComp from "../components/HeroComp.astro";
+import Testimonios from "../components/Testimonials";
 // Componentes especializados
-import Parallax from '../components/Parallax.astro';
 
-import ScrollButton from '../components/ScrollButton.astro';
+import ScrollButton from "../components/ScrollButton.astro";
 ---
 
+<!-- @Gw[lrq6z--= -->
 <Layout>
   <!-- Hero Section -->
-  <Welcome />
+  <Welcome client:load />
 
+  <HeroComp />
   <!-- Servicios Destacados -->
   <section class="py-20 bg-gray-950">
-    <div class="container mx-auto px-4 ">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
+    <div class="container mx-auto px-4">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500"
+      >
         NUESTROS <span class="text-white">SERVICIOS</span>
       </h2>
-      
-      <ServiceGrid c cols="3" >
-        <ServiceCard 
-          title="Corte Clásico" 
+
+      <ServiceGrid c cols="3">
+        <ServiceCard
+          title="Corte Clásico"
           description="Técnicas tradicionales con acabado moderno"
           icon="✂️"
           highlight
         />
-        <ServiceCard 
-          title="Afeitado Tradicional" 
+        <ServiceCard
+          title="Afeitado Tradicional"
           description="Con navaja y productos artesanales"
           icon="🪒"
         />
-        <ServiceCard 
-          title="Arreglo de Barba" 
+        <ServiceCard
+          title="Arreglo de Barba"
           description="Diseño y mantenimiento profesional"
           icon="🧔"
         />
@@ -58,18 +64,21 @@ import ScrollButton from '../components/ScrollButton.astro';
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-12">
         <div class="lg:w-1/2">
-          <img 
-            src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" 
+          <img
+            src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80"
             alt="Barbería clásica"
             class="rounded-lg shadow-2xl w-full"
             loading="lazy"
           />
         </div>
         <div class="lg:w-1/2">
-          <h2 class="text-3xl font-bold mb-6 text-amber-500">TRADICIÓN DESDE 2008</h2>
+          <h2 class="text-3xl font-bold mb-6 text-amber-500">
+            TRADICIÓN DESDE 2008
+          </h2>
           <p class="text-lg mb-6 leading-relaxed">
-            En nuestra barbería fusionamos lo mejor de las técnicas tradicionales con los estándares modernos 
-            de calidad. Cada cliente recibe un trato personalizado en un ambiente diseñado exclusivamente 
+            En nuestra barbería fusionamos lo mejor de las técnicas
+            tradicionales con los estándares modernos de calidad. Cada cliente
+            recibe un trato personalizado en un ambiente diseñado exclusivamente
             para hombres que valoran el cuidado personal.
           </p>
           <div class="space-y-4">
@@ -91,83 +100,40 @@ import ScrollButton from '../components/ScrollButton.astro';
     </div>
   </section>
 
- 
-
-  <!-- Galería de Trabajos con Parallax -->
-  <Parallax 
-    imageUrl="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1920&q=80" 
-    overlayClass="bg-gray-900/70"
-    speed="0.3"
-    contentClass="container mx-auto px-4 py-20"
-  >
-    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-      <span class="text-amber-500">GALERÍA</span> DE TRABAJOS
-    </h2>
-    <p class="text-xl text-white mb-12 max-w-2xl mx-auto">
-      Descubre la calidad y precisión de nuestros cortes y arreglos de barba
-    </p>
-    <GalleryPreview />
-  </Parallax>
-
   <!-- Testimonios -->
   <section class="py-20 bg-gray-800 text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-        OPINIONES DE <span class="text-amber-500">NUESTROS CLIENTES</span>
-      </h2>
-      <TestimonialCarousel />
-    </div>
+    <Testimonios client:load />
   </section>
 
-  <!-- CTA Principal con Parallax -->
-  <Parallax 
-    imageUrl="https://images.unsplash.com/photo-1631515243345-c2f77f7d2a5d?auto=format&fit=crop&w=1920&q=80" 
-    overlayClass="bg-gray-900/80"
-    speed="0.5"
-    contentClass="container mx-auto px-4 py-28 text-center"
-  >
-    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-      TRANSFORMA TU ESTILO HOY
-    </h2>
-    <p class="text-xl text-amber-300 mb-8 max-w-2xl mx-auto">
-      Reserva tu cita y recibe un tratamiento premium
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">
-        RESERVAR AHORA
-      </button>
-      <button class="bg-transparent border-2 border-amber-500 hover:bg-amber-500/10 text-amber-500 font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">
-        VER SERVICIOS
-      </button>
-    </div>
-  </Parallax>
 
-  <!-- Contacto -->
-  <section class="py-20 bg-gray-900 text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
-        CONTACTO Y <span class="text-white">HORARIO</span>
-      </h2>
-      
-      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-        <ContactBlock variant="dark" />
-        
-        <div class="bg-gray-800 p-8 rounded-lg">
-          <h3 class="text-xl font-bold mb-6 text-amber-500">Ubicación</h3>
-          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209132834!2d-73.98784392452527!3d40.74844047138918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1713456327812!5m2!1sen!2sus" 
-              class="w-full h-full" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
+  
+<!-- Contacto -->
+<section class="py-20 bg-gray-900 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-amber-500">
+      CONTACTO Y <span class="text-white">HORARIO</span>
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <ContactBlock variant="dark" />
+
+      <div class="bg-gray-800 p-8 rounded-lg">
+        <h3 class="text-xl font-bold mb-6 text-amber-500">Ubicación</h3>
+        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209132834!2d-73.98784392452527!3d40.74844047138918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1713456327812!5m2!1sen!2sus"
+            class="w-full h-full"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Scroll Button -->
-  <ScrollButton />
-</Layout>
+  </div>
+</section>
+<!-- Scroll Button -->
+<ScrollButton />
+
